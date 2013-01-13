@@ -1,0 +1,8 @@
+{
+	"name":         "hive-menu",
+	"version":      "0.0.1",
+	"dependencies": {
+		"underscore": "*",
+		"tap":        "*"
+	}
+}
