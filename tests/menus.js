@@ -18,7 +18,7 @@ tap.test('basic menu construction', function (t) {
 		title: 'Foo',
 		items: [
 			{title: 'Alpha', name: 'alpha', link: '/alpha', weight: 1},
-			{title: 'Beta', name: 'beta',  link: '/beta', weight: 0}
+			{title: 'Beta', name: 'beta', meta: {active: true}, link: '/beta', weight: 0}
 		]});
 
 	var menu_json = menu.toJSON();
@@ -31,13 +31,22 @@ tap.test('basic menu construction', function (t) {
 			"name" : "beta",
 			"weight" : 0, 
 			"title" : "Beta", 
-			"link" : "/beta" 
+			"link" : "/beta" ,
+			"type" : "item",
+			"type": "item",
+			meta: {active: true}
 		},{
 			"name" : "alpha",
 			"weight" : 1, 
 			"title" : "Alpha", 
-			"link" : "/alpha" 
-		}] 
+			"link" : "/alpha" ,
+			"type": "item",
+			"meta" : {
+			}
+		}] ,
+		"type": "menu",
+		"meta" : {
+		}
 	}, 'basic menu json');
 
 	var beta = menu.item('beta');
@@ -46,7 +55,9 @@ tap.test('basic menu construction', function (t) {
 		"name" : "beta",
 		"weight" : 0,
 		"title" : "Beta",
-		"link" : "/beta"
+		"link" : "/beta",
+		"type": "item",
+		meta: {active: true}
 	}, 'found beta');
 
 	beta.hide = true;
@@ -60,8 +71,14 @@ tap.test('basic menu construction', function (t) {
 			"name" : "alpha",
 			"weight" : 1,
 			"title" : "Alpha",
-			"link" : "/alpha"
-		}]
+			"link" : "/alpha",
+			"type": "item",
+			"meta" : {
+			}
+		}],
+		"type": "menu",
+		"meta" : {
+		}
 	}, 'basic menu json - after hiding beta');
 	t.end();
 
